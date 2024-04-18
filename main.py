@@ -1,3 +1,6 @@
+# from models.main import Model
+# from views.main import View
+# from controllers.main import Controller
 from models.main import Model
 from views.main import View
 from controllers.main import Controller
