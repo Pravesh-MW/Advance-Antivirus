@@ -12,11 +12,12 @@ class SideBar(Frame):
         super().__init__(*args, **kwargs)
         
         # Create left sidebar frame
-        self.sidebar_frame = Frame(self, bg="#333333", width=150, height=600)
+        self.sidebar_frame = Frame(self, bg="#333333", width=130, height=600)
         self.sidebar_frame.grid(row=0, column=0, sticky="nsew")
 
         # Create main content frame
-        self.content_frame = Frame(self, bg="#DDDDDD", width=750, height=600)
+        # self.content_frame = Frame(self, bg="#DDDDDD", width=750, height=600)
+        self.content_frame = Frame(self, width=770, height=600)
         self.content_frame.grid(row=0, column=1, sticky="nsew")
         
         
