@@ -26,8 +26,8 @@ class HomeView(SideBar):
         self.image_label3 = self.create_image_label(self.SRectangle, 50, 400)
         self.image_label4 = self.create_image_label(self.SRectangle, 400, 400)
         self.image_label5 = self.create_image_label(self.LRectangle, 12, 20)
-        self.image_label6 = self.create_image_label(self.NITJ_Logo, 22, 40)
-        
+        self.image_label6 = self.create_image_label(self.NITJ_Logo, 350, 40)
+        self.image_label6.config(bg='#D9D9D9')
         # Initialize the button image
         # self.button_image = self.create_image_label(self.arrow, 300, 330)
 
@@ -41,7 +41,8 @@ class HomeView(SideBar):
         self.Text_1 = self.create_text_label("Manual Scan",420, 270)
         self.Text_1 = self.create_text_label("Network Monitering", 70, 420)
         self.Text_1 = self.create_text_label("Advance Protection", 420, 420)
-        
+        self.Title = self.create_text_label("NITJ SHield: Antivirus for Ransomware", 190, 100)
+        self.Title.config(font=("Arial", 18), fg="black")
         
     def create_image(self, image_path):
         image = Image.open(image_path)

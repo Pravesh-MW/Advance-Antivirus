@@ -23,9 +23,9 @@ class SideBar(Frame):
         
         # Load icons (replace with your actual image paths)
         self.icon_paths = {
-            "home.png": f"{parent_directory}\\button_1.png",
-            "shield.png": f"{parent_directory}\\button_2.png",
-            "advance.png": f"{parent_directory}\\button_3.png",
+            "home.png": f"{parent_directory}\\assets\\frame0\\button_3.png",
+            "shield.png": f"{parent_directory}\\assets\\frame0\\button_2.png",
+            "advance.png": f"{parent_directory}\\assets\\frame0\\button_1.png",
         }
         self.icons = {}
         self.load_icons()
@@ -42,7 +42,7 @@ class SideBar(Frame):
         button_y = 50  # Starting position for buttons
 
         # Home button
-        home_button = Button(
+        self.home_button = Button(
             self.sidebar_frame,
             image=self.icons["home.png"],
             borderwidth=0,
@@ -51,11 +51,11 @@ class SideBar(Frame):
             bg="#333333",
             relief="flat"
         )
-        home_button.place(x=47, y=button_y, width=56, height=51)
+        self.home_button.place(x=47, y=button_y, width=56, height=51)
         button_y += 80  # Adjust spacing between buttons
 
         # Shield button
-        shield_button = Button(
+        self.shield_button = Button(
             self.sidebar_frame,
             image=self.icons["shield.png"],
             borderwidth=0,
@@ -64,11 +64,11 @@ class SideBar(Frame):
             bg="#333333",
             relief="flat"
         )
-        shield_button.place(x=47, y=button_y, width=56, height=56)
+        self.shield_button.place(x=47, y=button_y, width=56, height=56)
         button_y += 80  # Adjust spacing between buttons
 
         # Advance button
-        advance_button = Button(
+        self.advance_button = Button(
             self.sidebar_frame,
             image=self.icons["advance.png"],
             borderwidth=0,
@@ -77,7 +77,7 @@ class SideBar(Frame):
             bg="#333333",
             relief="flat"
         )
-        advance_button.place(x=47, y=button_y, width=56, height=50)
+        self.advance_button.place(x=47, y=button_y, width=56, height=50)
 
 
 if __name__ == "__main__":

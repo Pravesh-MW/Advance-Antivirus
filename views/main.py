@@ -2,6 +2,7 @@ from typing import TypedDict
 
 from .root import Root
 from .home import HomeView
+from .sidebar import SideBar
 from .test import TestView
 from .realTime import RealTimeView
 from .manual import ManualView
@@ -15,6 +16,7 @@ class Frames(TypedDict):
     manual: ManualView
     networkMonitoring: NetworkMonitoringView
     advance: AdvanceView
+    sidebar: SideBar
 
 class View:
     def __init__(self):
@@ -25,8 +27,9 @@ class View:
         self._add_frame(TestView, "test")
         self._add_frame(RealTimeView, "realTime")
         self._add_frame(ManualView, "manual")
-        self._add_frame(NetworkMonitoringView,"networkMonitoring")
-        self._add_frame(AdvanceView,"advance")
+        self._add_frame(NetworkMonitoringView, "networkMonitoring")
+        self._add_frame(AdvanceView, "advance")
+        self._add_frame(SideBar, "sidebar")
 
     def _add_frame(self, Frame, name: str) -> None:
         self.frames[name] = Frame(self.root)
