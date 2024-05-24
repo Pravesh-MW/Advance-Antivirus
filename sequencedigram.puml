@@ -1,0 +1,64 @@
+@startuml
+
+participant User
+participant ViewController
+participant View
+participant RealTimeView
+participant ManualView
+participant AdvanceView
+participant NetworkView
+participant Model
+
+activate User
+
+User->>ViewController: User Interaction (Home, Real-Time, Advance, Manual, Network)
+
+activate ViewController
+activate View
+activate Model
+
+alt User selects Home
+  ViewController->>View: home()
+  View->>Model: (potentially retrieve data for Home view)
+else User selects Real-Time
+  ViewController->>View: realTime()
+  View->>RealTimeView: switch(page="Real Time")
+  activate RealTimeView
+  RealTimeView->>Model: get_realtime()  ; Retrieve RealTime object
+  RealTimeView->>Model: start_realTime(RealTime)  ; Start Real-Time monitoring
+  RealTimeView->>ViewController: (optional feedback)
+  deactivate RealTimeView
+else User selects Manual
+  ViewController->>View: manual()
+  View->>ManualView: switch(page="Manual")
+  activate ManualView
+  ManualView->>Model: get_manual()  ; Retrieve Manual object
+  ManualView->>Model: scan_directory()  ; Start directory scan
+  ManualView->>Model: (optional scan file based on selection)
+  ManualView->>ViewController: (optional feedback)
+  deactivate ManualView
+else User selects Advance
+  ViewController->>View: advance()
+  View->>AdvanceView: switch(page="Advance")
+  activate AdvanceView
+  AdvanceView->>Model: get_advance()  ; Retrieve Advance object
+  AdvanceView->>Model: select_methods()  ; Perform method selection
+  AdvanceView->>ViewController: (optional feedback)
+  deactivate AdvanceView
+else User selects Network
+  ViewController->>View: network()
+  View->>NetworkView: switch(page="Network")
+  activate NetworkView
+  NetworkView->>Model: get_network()  ; Retrieve Network object
+  NetworkView->>Model: select_methods()  ; Perform method selection
+  NetworkView->>ViewController: (optional feedback)
+  deactivate NetworkView
+end alt
+
+deactivate ViewController
+deactivate View
+deactivate Model
+
+deactivate User
+
+@enduml

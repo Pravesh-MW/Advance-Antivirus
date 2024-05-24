@@ -7,6 +7,7 @@ class RealTime(watchdog.events.FileSystemEventHandler):
         # self.watch_dir = "C:\\Users\\Asus\\Documents\\Major Project\\Advance-Antivirus"
         self.watch_dir = "C:\\Users\\Asus\\Downloads"
         self.OUTPUT = []
+        self.run = False
         self.observer = watchdog.observers.Observer()
         # self.event_handler = FileEventHandler()
     
@@ -19,7 +20,6 @@ class RealTime(watchdog.events.FileSystemEventHandler):
     def on_modified(self, event):
         file_path = event.src_path
         file = path.basename(file_path).split('/')[-1]
-        print(f"New file modified: {path}")
         self.OUTPUT.append(("modified",file, file_path))
         
         
@@ -39,15 +39,15 @@ class RealTime(watchdog.events.FileSystemEventHandler):
         self.observer.schedule(self, self.watch_dir, recursive=True)
         self.observer.start()
         try:
-            while True:
+            while self.run == True:
                 time.sleep(1)
         except KeyboardInterrupt:
             self.observer.stop()
         self.observer.join()
     
-    def stop_runtime(self):
-        self.observer.stop()
-        self.observer.join()
+    # def stop_runtime(self):
+    #     self.observer.stop()
+    #     self.observer.join()
     
     
 # if __name__ == "__main__":

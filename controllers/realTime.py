@@ -32,9 +32,15 @@ class RealTimeController:
 
     def Start_Scan(self):
          print(f"{self.model.realtime.watch_dir} being monitored")
-         self.frame.On_Of_button.config(command=self.Start_Scan)
-         self.model.realtime.start_runTime()
-     #     index = self.view.frames["runtime"].table.index
+         self.frame.On_Of_button.config(command=self.Stop_Scan)
+         try :
+            self.model.threading.add_task(self.model.worker.start())
+            self.model.threading.run_tasks()
+         except Exception as e:
+            print("error: ", str(e))
+    #      self.model.realtime.run = True
+    #      self.model.worker.start()
+    #  #     index = self.view.frames["runtime"].table.index
      #     try:
      #      #   self.view.frames["runtime"].table.clear_data()
      #        for i in range(len(paths)):
@@ -49,5 +55,9 @@ class RealTimeController:
     
     def Stop_Scan(self):
          print(f"{self.model.realtime.watch_dir} monitering end")
-     #     for 
+        #  self.model.realtime.run = False
+        #  self.model.worker.terminate()
+         self.model.threading.shutdown()
+         print(self.model.worker.is_alive())
+         
          self.frame.On_Of_button.config(command=self.Start_Scan)

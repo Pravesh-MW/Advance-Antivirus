@@ -1,0 +1,94 @@
+@startuml
+class ViewController {
+    -view: View
+    -model: Model
+    -home(): None
+    -realTime(): None
+    -advance(): None
+    -manual(): None
+    -network(): None
+}
+class Model {
+    -realtime: RealTime
+    -manual: Manual
+    -network: Network
+    -advance: Advance
+    -get_realtime(): realtime
+    -get_manual(): manual
+    -get_network(): network
+    -get_advance(): advance
+}
+
+class View {
+    -root: Root
+    -frames: dict
+    -switch(page: str): None
+    -_add_frame(Frame, name: str): None
+    -start_mainloop(): None
+}
+
+class RealTime {
+    -watch_dir: str
+    -start_runTime(): None
+}
+
+class Advance {
+    -method1: str
+    -method2: str
+    -method3: str
+    -start_advance(): None
+}
+
+class Manual {
+    -Output: dict
+    -start_manual(): None
+}
+
+class Network {
+    -Ethernet_packet: None
+    -Wifi_packet: None
+    -Output: dict
+    -start_network(): None
+}
+
+class ManualView{
+    -select_file: str
+    -select_folder: str
+    -create_button(): None
+    -create_label(): None
+    -create_text(): None
+}
+class RealTimeView{
+    -Button_on_off: str
+    -create_button(): None
+    -create_label(): None
+    -create_text(): None
+}
+
+class AdvanceView{    
+    -method1: boolean
+    -method2: boolean
+    -method3: boolean
+    -create_button(): None
+    -create_label(): None
+    -create_text(): None
+}
+
+class NetworkView{
+    -Scan_network: boolean
+    -create_button(): None
+    -create_label(): None
+    -create_text(): None
+}
+Model --|> RealTime
+Model --|> Advance
+Model --|> Network
+Model --|> Manual
+ViewController --|> View
+ViewController --|> Model
+
+View --|> ManualView
+View --|> RealTimeView
+View --|> AdvanceView
+View --|> NetworkView
+@enduml

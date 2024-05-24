@@ -36,9 +36,11 @@ class ManualView(SideBar, ScrollTable):  # Inherit from SideBar
         # self.button_image = self.create_image_label(self.arrow, 300, 330)
 
         # Initialize the buttons
-        self.Full_Button = self.create_button(self.button4, lambda: print("Full Scan"), x=66, y=230, width=160, hight=30)
-        self.File_Button = self.create_button(self.button5, lambda: print("File Scan"), x=315, y=230, width=150, hight=30)
-        self.Folder_Button = self.create_button(self.button6, lambda: print("Folder Scan"), x=543, y=230, width=145, hight=30)
+        # self.Full_Button = self.create_button(self.button4, lambda: print("Full Scan"), x=66, y=230, width=160, hight=30)
+        # self.File_Button = self.create_button(self.button5, lambda: print("File Scan"), x=315, y=230, width=150, hight=30)
+        self.File_Button = self.create_button(self.button5, lambda: print("File Scan"), x=200, y=230, width=150, hight=30)
+        # self.Folder_Button = self.create_button(self.button6, lambda: print("Folder Scan"), x=543, y=230, width=145, hight=30)
+        self.Folder_Button = self.create_button(self.button6, lambda: print("Folder Scan"), x=430, y=230, width=145, hight=30)
         
         self.Heading = self.create_text_label("Manual Scan", x=48, y=124)
         self.Suspicious = self.create_text_label("Suspicious files", x=48, y=321)

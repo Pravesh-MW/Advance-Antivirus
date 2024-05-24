@@ -41,7 +41,7 @@ class HomeView(SideBar):
         self.Text_1 = self.create_text_label("Manual Scan",420, 270)
         self.Text_1 = self.create_text_label("Network Monitering", 70, 420)
         self.Text_1 = self.create_text_label("Advance Protection", 420, 420)
-        self.Title = self.create_text_label("NITJ SHield: Antivirus for Ransomware", 190, 100)
+        self.Title = self.create_text_label("NITJ Shield: Antivirus for Ransomware", 190, 100)
         self.Title.config(font=("Arial", 18), fg="black")
         
     def create_image(self, image_path):

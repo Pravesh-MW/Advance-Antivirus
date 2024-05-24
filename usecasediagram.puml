@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+
+actor User as u
+
+package System {
+  usecase "Show Home Screen" as UC1
+  usecase "Start Real-Time Monitoring" as UC2
+  usecase "Perform Manual Scan" as UC3
+  usecase "Execute Advanced Functions" as UC4
+  usecase "Manage Network Settings" as UC5
+}
+
+u -> UC1
+u -> UC2
+u -> UC3
+u -> UC4
+u -> UC5
+
+@enduml
