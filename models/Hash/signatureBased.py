@@ -130,16 +130,16 @@ class MalwareDetector:
 
     
 
-#### main (Output section) ##########
-detector = MalwareDetector()
-print("**************start***************\n\n")
+# #### main (Output section) ##########
+# detector = MalwareDetector()
+# print("**************start***************\n\n")
 
 
-print("Code: ", detector.malware_checker_sha256(f"{detector.parent_directory}\\engine.py"))
-print("Hash of file: ", detector.md5_hash(f"{detector.parent_directory}\\engine.py"))
+# print("Code: ", detector.malware_checker_sha256(f"{detector.parent_directory}\\engine.py"))
+# print("Hash of file: ", detector.md5_hash(f"{detector.parent_directory}\\engine.py"))
 
 
-print("\n\n**************end******************")
+# print("\n\n**************end******************")
 
-# virusshare.com/hashes
-# hash database
+# # virusshare.com/hashes
+# # hash database

@@ -20,6 +20,7 @@ class ManualView(SideBar, ScrollTable):  # Inherit from SideBar
         self.button4 = f"{parent_directory}\\assets\\manual\\button_4.png"
         self.button5 = f"{parent_directory}\\assets\\manual\\button_5.png"
         self.button6 = f"{parent_directory}\\assets\\manual\\button_6.png"
+        self.button7 = f"{parent_directory}\\assets\\manual\\button_7.png"
         self.image_1 = f"{parent_directory}\\assets\\realTime\\image_1.png"
         self.image_2 = f"{parent_directory}\\assets\\realTime\\image_2.png"
         self.image_3 = f"{parent_directory}\\assets\\realTime\\image_3.png"
@@ -36,14 +37,15 @@ class ManualView(SideBar, ScrollTable):  # Inherit from SideBar
         # self.button_image = self.create_image_label(self.arrow, 300, 330)
 
         # Initialize the buttons
-        # self.Full_Button = self.create_button(self.button4, lambda: print("Full Scan"), x=66, y=230, width=160, hight=30)
-        # self.File_Button = self.create_button(self.button5, lambda: print("File Scan"), x=315, y=230, width=150, hight=30)
-        self.File_Button = self.create_button(self.button5, lambda: print("File Scan"), x=200, y=230, width=150, hight=30)
-        # self.Folder_Button = self.create_button(self.button6, lambda: print("Folder Scan"), x=543, y=230, width=145, hight=30)
-        self.Folder_Button = self.create_button(self.button6, lambda: print("Folder Scan"), x=430, y=230, width=145, hight=30)
+        self.Full_Button = self.create_button(self.button4, lambda: print("Full Scan"), x=66, y=230, width=160, hight=30)
+        self.File_Button = self.create_button(self.button5, lambda: print("File Scan"), x=315, y=230, width=150, hight=30)
+        # self.File_Button = self.create_button(self.button5, lambda: print("File Scan"), x=200, y=230, width=150, hight=30)
+        self.Folder_Button = self.create_button(self.button6, lambda: print("Folder Scan"), x=543, y=230, width=145, hight=30)
+        # self.Folder_Button = self.create_button(self.button6, lambda: print("Folder Scan"), x=430, y=230, width=145, hight=30)
         
         self.Heading = self.create_text_label("Manual Scan", x=48, y=124)
         self.Suspicious = self.create_text_label("Suspicious files", x=48, y=321)
+        self.Remove_malware = self.create_button(self.button7, lambda: print("Remove Malware"), x=580, y=321, width=145, hight=30)
         self.Text = self.create_text_label("Manual Scan Scan selected file or folder and find suspicious files.", x=48, y=172, color="#FFFFFF")
         self.Text.config(wraplength=600)
         self.Text.config(justify="left")

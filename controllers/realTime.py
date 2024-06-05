@@ -7,6 +7,8 @@ class RealTimeController:
         self.model = model
         self.view = view
         self.frame = self.view.frames["realTime"]
+        self.on = "C:\\Users\\Asus\\Documents\\Major_Project\\Advance-Antivirus\\controllers\\__pycache__\\Turn_on.png"
+        self.off = "C:\\Users\\Asus\\Documents\\Major_Project\\Advance-Antivirus\\views\\assets\\realtime\\button_4.png"
         self._bind()
 
     def _bind(self) -> None:
@@ -15,6 +17,7 @@ class RealTimeController:
         self.frame.shield_button.config(command=self.shield)
         self.frame.advance_button.config(command=self.advance)
         self.frame.On_Of_button.config(command=self.Start_Scan)
+        self.frame.Remove_malware.config(command=self.Remove_Malware)
 
 
 
@@ -34,11 +37,11 @@ class RealTimeController:
          print(f"{self.model.realtime.watch_dir} being monitored")
          self.frame.On_Of_button.config(command=self.Stop_Scan)
          try :
+            self.model.realtime.run = True
             self.model.threading.add_task(self.model.worker.start())
             self.model.threading.run_tasks()
          except Exception as e:
             print("error: ", str(e))
-    #      self.model.realtime.run = True
     #      self.model.worker.start()
     #  #     index = self.view.frames["runtime"].table.index
      #     try:
@@ -55,9 +58,19 @@ class RealTimeController:
     
     def Stop_Scan(self):
          print(f"{self.model.realtime.watch_dir} monitering end")
-        #  self.model.realtime.run = False
-        #  self.model.worker.terminate()
-         self.model.threading.shutdown()
+         self.model.realtime.run = False
+         self.model.realtime.observer.stop()
+         
          print(self.model.worker.is_alive())
          
          self.frame.On_Of_button.config(command=self.Start_Scan)
+         
+         
+    def Remove_Malware(self):
+         try:
+            for i in range(len(self.paths)):
+               if self.malware[i] == 'malware':
+                    print(self.paths[i]," deleted")
+            self.view.frames["manual"].table.clear_data()
+         except Exception as e:
+            print("errror: ", str(e))

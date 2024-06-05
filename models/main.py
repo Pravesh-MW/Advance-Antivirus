@@ -1,5 +1,6 @@
 from .manual import Manual
 from .realTime import RealTime
+from .network import Network
 from multiprocessing import Process
 # from .Hash.signatureBased import MalwareDetector
 from .Threading import WorkerPool
@@ -12,6 +13,7 @@ class Model:
         self.test = "x"
         self.manual = Manual()
         self.realtime = RealTime()
+        self.network = Network()
         self.Master = Process
         self.realTimeProcess = None
         # self.engine = MalwareDetector()

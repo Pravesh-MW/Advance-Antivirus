@@ -14,6 +14,7 @@ class NetworkMonitoringController:
         self.frame.home_button.config(command=self.home)
         self.frame.shield_button.config(command=self.shield)
         self.frame.advance_button.config(command=self.advance)
+        self.frame.Button_search.config(command=self.search)
 
 
 
@@ -29,11 +30,10 @@ class NetworkMonitoringController:
          self.view.switch("advance")
          print("cleacked on advance")
 
-
-    # def update_view(self) -> None:
-    #     current_user = self.model.auth.current_user
-    #     if current_user:
-    #         username = current_user["username"]
-    #         self.frame.greeting.config(text=f"Welcome, {username}!")
-    #     else:
-    #         self.frame.greeting.config(text=f"")
+    def search(self) -> None:
+         url = self.frame.entry.get()
+         if url == "":
+          self.frame.output.config(text="")
+         tag = self.model.network.predict(url)
+         self.frame.output.config(text=tag)
+     

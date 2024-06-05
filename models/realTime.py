@@ -5,7 +5,7 @@ from os import path
 class RealTime(watchdog.events.FileSystemEventHandler):
     def __init__(self) -> None:
         # self.watch_dir = "C:\\Users\\Asus\\Documents\\Major Project\\Advance-Antivirus"
-        self.watch_dir = "C:\\Users\\Asus\\Downloads"
+        self.watch_dir = "C:\\Users\\Asus\\Documents\\Major_Project\\Advance-Antivirus\\test\\realtime"
         self.OUTPUT = []
         self.run = False
         self.observer = watchdog.observers.Observer()
@@ -14,7 +14,7 @@ class RealTime(watchdog.events.FileSystemEventHandler):
     def on_created(self, event):
         file_path = event.src_path
         file = path.basename(file_path).split('/')[-1]
-        print(f"New file created: {path}")
+        print(f"New file created: {file}")
         self.OUTPUT.append(("created",file, file_path))
 
     def on_modified(self, event):
@@ -26,7 +26,7 @@ class RealTime(watchdog.events.FileSystemEventHandler):
     def on_deleted(self, event):
         file_path = event.src_path
         file = path.basename(file_path).split('/')[-1]
-        print(f"New file deleted: {path}")
+        print(f"New file deleted: {file}")
         self.OUTPUT.append(("deleted",file, file_path))
 
     def on_moved(self, event):

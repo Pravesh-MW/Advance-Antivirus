@@ -1,5 +1,3 @@
-'''In This Antivirus Sha256 DataBase Is used By Anic.'''
-
 from hashlib import md5
 from operator import le
 import time

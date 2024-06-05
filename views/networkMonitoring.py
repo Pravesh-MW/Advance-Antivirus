@@ -1,4 +1,4 @@
-from tkinter import Frame, Label, Button, PhotoImage
+from tkinter import Frame, Label, Button, PhotoImage, Entry
 from .sidebar import SideBar  # Import the SideBar class
 from PIL import Image, ImageTk
 import os
@@ -12,7 +12,9 @@ class NetworkMonitoringView(SideBar):  # Inherit from SideBar
         super().__init__(*args, **kwargs)
         
         # Initialize the arrow image
+        self.button3 = f"{parent_directory}\\assets\\realTime\\Turn_on.png"
         self.button4 = f"{parent_directory}\\assets\\realTime\\button_4.png"
+        self.button5 = f"{parent_directory}\\assets\\realTime\\URL_search.png"
         self.image_1 = f"{parent_directory}\\assets\\realTime\\image_1.png"
         self.image_2 = f"{parent_directory}\\assets\\realTime\\image_2.png"
         self.image_3 = f"{parent_directory}\\assets\\realTime\\image_3.png"
@@ -29,10 +31,13 @@ class NetworkMonitoringView(SideBar):  # Inherit from SideBar
         # self.button_image = self.create_image_label(self.arrow, 300, 330)
 
         # Initialize the buttons
-        self.Button_1 = self.create_button(self.button4, lambda: print("Turn off"), x=600, y=124, width=123, hight=30)
+        # self.Button_1 = self.create_button(self.button4, lambda: print("Turn off"), x=600, y=124, width=123, hight=30)
+        self.entry = self.create_text_input(x=100, y=321)
+        self.Button_search = self.create_button(self.button5, lambda: print("Search"), x=560, y=321, width=123, hight=30)
         
         self.Heading = self.create_text_label("Network Monitoring", x=48, y=124)
-        self.Suspicious = self.create_text_label("Output window", x=48, y=321)
+        self.Suspicious = self.create_text_label("Output window", x=48, y=371)
+        self.output = self.create_text_label("",x=248, y= 371)
         self.Text = self.create_text_label("Real time Scaning continuously protects your PC against malware and other viruses any time you use a file, so it's a good idea to keep it turned on.", x=48, y=172, color="#FFFFFF")
         self.Text.config(wraplength=600)
         self.Text.config(justify="left")
@@ -44,6 +49,11 @@ class NetworkMonitoringView(SideBar):  # Inherit from SideBar
         label = Label(self.content_frame, image=photo)
         label.image = photo  # Keep a reference to the image to prevent it from being garbage collected
         return label, photo
+    
+    def create_text_input(self, x, y, width=30, height=30):
+        text_input = Entry(self.content_frame, width=width, font=("Helvetica", 14), bg="white")
+        text_input.place(x=x, y=y)
+        return text_input
     
     def create_text_label(self, text, x, y, color="black"):
         lable =  Label(self.content_frame, text=text, font=("Helvetica", 14), fg=color, bg="#D9D9D9")

@@ -1,6 +1,7 @@
 from tkinter.filedialog import askdirectory, askopenfilename
 import os
 from .Hash.signatureBased import MalwareDetector
+from .ML.PE import PE
 class Manual():
     def __init__(self):
         """
@@ -13,6 +14,7 @@ class Manual():
         self.path = "."
         self.Output = []
         self.engine = MalwareDetector()
+        self.ml_model = PE()
         
     # def malware_scan_md5(self):
     #     return self.engine.malware_checker_md5(self.file)
@@ -21,7 +23,13 @@ class Manual():
     def Path(self):
         self.path = askdirectory()
     
-
+    def ML_scan(self, file_path):
+        file_name, file_extension = os.path.splitext(file_path)
+        if file_extension == ".exe":
+            if self.ml_model.predict(file_path) == 0 :
+                return "malware"
+        else:
+            return "safe"
     def scan_file(self):
         self.file = askopenfilename()
         self.paths.clear()
@@ -41,6 +49,18 @@ class Manual():
             pass
 
         self.malware.append("error")
+        return self.paths, self.files, self.malware
+   
+   
+    def scan_full(self):
+        # self.path = "C:\\Users\\Asus\\Documents\\Major Project\\Advance-Antivirus\\test"
+        self.path = "C:\\Users\\Asus\\Pictures"
+        
+        self.paths.clear()
+        self.files.clear()
+        self.malware.clear()
+        self._scan_dir(self.path)
+        # print(self.files)
         return self.paths, self.files, self.malware
         
     def start_scan(self):

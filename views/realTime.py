@@ -13,10 +13,13 @@ class RealTimeView(SideBar):  # Inherit from SideBar
         
         # Initialize the arrow image
         self.button4 = f"{parent_directory}\\assets\\realTime\\button_4.png"
+        self.button3 = f"{parent_directory}\\assets\\realTime\\Turn_on.png"
         self.image_1 = f"{parent_directory}\\assets\\realTime\\image_1.png"
         self.image_2 = f"{parent_directory}\\assets\\realTime\\image_2.png"
         self.image_3 = f"{parent_directory}\\assets\\realTime\\image_3.png"
         self.image_4 = f"{parent_directory}\\assets\\realTime\\image_4.png"
+        self.button7 = f"{parent_directory}\\assets\\manual\\button_7.png"
+        
 
         # Initialize the image labels
         self.image_label1 = self.create_image_label(self.image_1, x=28, y=114)
@@ -30,6 +33,8 @@ class RealTimeView(SideBar):  # Inherit from SideBar
 
         # Initialize the buttons
         self.On_Of_button = self.create_button(self.button4, lambda: print("Turn off"), x=600, y=124, width=123, hight=30)
+        self.Remove_malware = self.create_button(self.button7, lambda: print("Remove Malware"), x=580, y=321, width=145, hight=30)
+
         
         self.Heading = self.create_text_label("Real Time Protection", x=48, y=124)
         self.Suspicious = self.create_text_label("Suspicious files ", x=48, y=321)
